@@ -4,7 +4,7 @@ use std::path::Path;
 
 fn main() {
     let matches = Command::new("toolkit")
-        .version("0.1.2")
+        .version("0.1.3")
         .author("Joe Grabski <joe.grabski@clearwatt.co.uk>")
         .about("Generates C# .NET service boilerplate")
         .arg(
@@ -76,10 +76,14 @@ public interface I{0}: ICommandHandler<{0}Request, {0}Response> {{
 
 fn generate_request(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
-        "namespace {1}.{0};
-public class {0}Request {{
-    // Define request properties here
-}}
+        "using Audacia.Commands;
+
+namespace {1}.{0};
+
+/// <summary>
+///
+/// </summary>
+public record {0}Request() : ICommand;
 ",
         service_name, namespace
     );
@@ -93,6 +97,7 @@ public class {0}Request {{
 fn generate_response(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
         "namespace {1}.{0};
+
 public class {0}Response {{
     // Define response properties here
 }}",
@@ -134,6 +139,7 @@ fn generate_validator(service_name: &str, folder_name: &str, namespace: &str) {
         "using FluentValidation;
 
 namespace {1}.{0};
+
 public class {0}Validator : AbstractValidator<{0}Request> {{
 
     public {0}Validator()
