@@ -59,7 +59,9 @@ fn main() {
 
 fn generate_interface(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
-        "namespace {1}.{0};
+        "using Audacia.Commands;
+
+namespace {1}.{0};
 
 /// <summary>
 /// Service to 
