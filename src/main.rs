@@ -3,8 +3,8 @@ use std::fs;
 use std::path::Path;
 
 fn main() {
-    let matches = Command::new("boilerplate")
-        .version("1.0")
+    let matches = Command::new("toolkit")
+        .version("0.1.0")
         .author("Joe Grabski <joe.grabski@clearwatt.co.uk>")
         .about("Generates C# .NET service boilerplate")
         .arg(
