@@ -4,7 +4,7 @@ use std::path::Path;
 
 fn main() {
     let matches = Command::new("toolkit")
-        .version("0.1.1")
+        .version("0.1.2")
         .author("Joe Grabski <joe.grabski@clearwatt.co.uk>")
         .about("Generates C# .NET service boilerplate")
         .arg(
