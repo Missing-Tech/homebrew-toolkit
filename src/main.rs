@@ -4,7 +4,7 @@ use std::path::Path;
 
 fn main() {
     let matches = Command::new("toolkit")
-        .version("0.1.0")
+        .version("0.1.1")
         .author("Joe Grabski <joe.grabski@clearwatt.co.uk>")
         .about("Generates C# .NET service boilerplate")
         .arg(
@@ -59,7 +59,7 @@ fn main() {
 
 fn generate_interface(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
-        "namespace {1}.Services;
+        "namespace {1}.{0};
 
 /// <summary>
 /// Service to 
@@ -74,11 +74,11 @@ public interface I{0}: ICommandHandler<{0}Request> {{
 
 fn generate_request(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
-        "namespace {1}.Services {{
+        "namespace {1}.{0};
 public class {0}Request {{
     // Define request properties here
 }}
-}}",
+",
         service_name, namespace
     );
     write_file(
@@ -90,7 +90,7 @@ public class {0}Request {{
 
 fn generate_response(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
-        "namespace {1}.Services;
+        "namespace {1}.{0};
 public class {0}Response {{
     // Define response properties here
 }}",
@@ -107,7 +107,7 @@ fn generate_implementation(service_name: &str, folder_name: &str, namespace: &st
     let content = format!(
         "using Audacia.Commands;
 
-namespace {1}.Services;
+namespace {1}.{0};
 
 /// <inheritdoc/>
 public class {0} : I{0} {{
@@ -129,7 +129,7 @@ fn generate_validator(service_name: &str, folder_name: &str, namespace: &str) {
     let content = format!(
         "using FluentValidation;
 
-namespace {1}.Services;
+namespace {1}.{0};
 public class {0}Validator : AbstractValidator<{0}Request> {{
 
     public {0}Validator()
