@@ -118,15 +118,15 @@ namespace {1}.{0};
 
 /// <inheritdoc/>
 public class {0} : I{0} {{
-    public {0}Service() 
+    public {0}() 
     {{
 
     }}
 
-    public async Task<CommandResult<{0}Response>> HandleAsync({0}Request request) 
+    public async Task<CommandResult<{0}Response>> HandleAsync({0}Request request, CancellationToken cancellationToken) 
     {{
         // Implement the service logic here
-        return new {0}Response();
+        return CommandResult.WithResult(new {0}Response());
     }}
 }}",
         service_name, namespace
