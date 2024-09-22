@@ -64,7 +64,7 @@ fn generate_interface(service_name: &str, folder_name: &str, namespace: &str) {
 /// <summary>
 /// Service to 
 /// </summary>
-public interface I{0}: ICommandHandler<{0}Request> {{
+public interface I{0}: ICommandHandler<{0}Request, {0}Response> {{
 
 }}",
         service_name, namespace
@@ -111,11 +111,13 @@ namespace {1}.{0};
 
 /// <inheritdoc/>
 public class {0} : I{0} {{
-    public {0}Service() {
+    public {0}Service() 
+    {{
 
-    }
+    }}
 
-    public async Task<CommandResult<{0}Response>> HandleAsync({0}Request request) {{
+    public async Task<CommandResult<{0}Response>> HandleAsync({0}Request request) 
+    {{
         // Implement the service logic here
         return new {0}Response();
     }}
