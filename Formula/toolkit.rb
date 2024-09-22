@@ -2,7 +2,7 @@ class Toolkit < Formula
   desc "Generates C# .NET service boilerplate"
   homepage "https://github.com/Missing-Tech/toolkit"
   url "https://github.com/Missing-Tech/toolkit/archive/v0.1.3.tar.gz"
-  sha256 "a4e72550fd22687f01e75a4ef90e2f33332d839bd9573a2194d1a93c6b532590"
+  sha256 "0e2bec8ed0453d3204a01d3ba03b0ababe917d0824e28a3759fe0a26c95c30af"
   license "MIT"
 
   depends_on "rust" => :build
